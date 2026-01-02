@@ -14,10 +14,7 @@ class GameView(arcade.View):
     def setup(self):
         self.player_list = arcade.SpriteList()
 
-        self.player_sprite = Player(
-            "sprites/right.png",
-            scale=0.5,
-        )
+        self.player_sprite = Player()
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
