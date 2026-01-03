@@ -6,17 +6,13 @@ class GameView(arcade.View):
     def __init__(self):
         super().__init__()
         self.background_color = arcade.color.AMAZON
-
         self.player_list = None
-
         self.player_sprite = None
 
     def setup(self):
         self.player_list = arcade.SpriteList()
 
         self.player_sprite = Player()
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
 
     def reset(self):
@@ -46,21 +42,13 @@ class GameView(arcade.View):
         For a full list of keys, see:
         https://api.arcade.academy/en/latest/arcade.key.html
         """
+        if key == arcade.key.ESCAPE:
+            arcade.close_window()
 
-        if key == arcade.key.W:
-            self.player_sprite.change_y = self.player_sprite.movement_speed
-        elif key == arcade.key.S:
-            self.player_sprite.change_y = -self.player_sprite.movement_speed
-        elif key == arcade.key.A:
-            self.player_sprite.change_x = -self.player_sprite.movement_speed
-        elif key == arcade.key.D:
-            self.player_sprite.change_x = self.player_sprite.movement_speed
+        self.player_sprite.player_on_key_press(key)
 
     def on_key_release(self, key, key_modifiers): #отпустить клавишу что будет
-        if key == arcade.key.W or key == arcade.key.S:
-            self.player_sprite.change_y = 0
-        elif key == arcade.key.A or key == arcade.key.D:
-            self.player_sprite.change_x = 0
+        self.player_sprite.player_on_key_release(key)
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
         pass
