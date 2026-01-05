@@ -10,8 +10,11 @@ class Player(arcade.Sprite):
         self.center_x = 50
         self.center_y = 50
 
+        self.hp = 100
+
         self.texture_right = arcade.load_texture("sprites/right.png")
         self.texture_left = arcade.load_texture("sprites/left.png")
+
 
     def player_on_key_press(self, key):
         if key == arcade.key.W:
