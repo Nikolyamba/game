@@ -1,8 +1,9 @@
 import arcade
-from arcade import Rect, XYWH
+from arcade import XYWH
 
 from entities.player_settings import Player
 from features.settings import window_height
+from features.timer import Time
 
 
 class GameView(arcade.View):
@@ -12,6 +13,9 @@ class GameView(arcade.View):
 
         self.player_list = None
         self.player_sprite = None
+
+        self.timer = Time()
+        self.timer.start()
 
     def setup(self):
         self.player_list = arcade.SpriteList()
@@ -42,6 +46,18 @@ class GameView(arcade.View):
 
         arcade.draw_texture_rect(texture=self.stamina_texture, rect=stamina_rect)
         arcade.draw_text(str(self.player_sprite.stamina), x=70, y=window_height-90, font_name="Minecraft", font_size=20)
+
+        seconds, minutes, hours = self.timer.get_sec_min_hrs(self.timer.time_passed())
+
+        arcade.draw_text(
+            f"{hours}:{minutes}:{seconds}",
+            x = self.window.width // 2,
+            y = self.window.height // 2 + 450,
+            font_size=40,
+            font_name="Minecraft",
+            color=arcade.color.WHITE,
+            anchor_x="center"
+        )
 
     def on_update(self, delta_time : float = 1/60):
         """

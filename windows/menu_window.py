@@ -74,7 +74,7 @@ class MenuView(UIView):
         )
 
         arcade.draw_text(
-            "v0.1 alpha",
+            "v0.1.2 alpha",
             30,
             50,
             arcade.color.GRAY,
