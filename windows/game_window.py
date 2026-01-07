@@ -20,6 +20,7 @@ class GameView(arcade.View):
         self.player_list.append(self.player_sprite)
 
         self.health_texture = arcade.load_texture("sprites/health.png")
+        self.stamina_texture = arcade.load_texture("sprites/stamina.png")
 
     def reset(self):
         """Reset the game to the initial state."""
@@ -34,9 +35,13 @@ class GameView(arcade.View):
         self.player_list.draw()
 
         heart_rect = XYWH(x=30, y=window_height-30, width=120, height=60)
+        stamina_rect = XYWH(x=30, y=window_height-90, width=60, height=60)
 
         arcade.draw_texture_rect(texture=self.health_texture, rect=heart_rect)
-        arcade.draw_text(str(self.player_sprite.hp), x=100, y=window_height-30)
+        arcade.draw_text(str(self.player_sprite.hp), x=70, y=window_height-40, font_name="Minecraft", font_size=20)
+
+        arcade.draw_texture_rect(texture=self.stamina_texture, rect=stamina_rect)
+        arcade.draw_text(str(self.player_sprite.stamina), x=70, y=window_height-90, font_name="Minecraft", font_size=20)
 
     def on_update(self, delta_time : float = 1/60):
         """
