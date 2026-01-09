@@ -5,7 +5,6 @@ from entities.player_settings import Player
 from features.settings import window_height
 from features.timer import Time
 
-
 class GameView(arcade.View):
     def __init__(self):
         super().__init__()

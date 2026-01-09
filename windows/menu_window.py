@@ -1,7 +1,7 @@
 import os
 
 import arcade
-from arcade import XYWH, load_font
+from arcade import XYWH
 from arcade.gui import UIGridLayout, UIAnchorLayout, UIFlatButton, UIView, UIManager
 
 from windows.game_window import GameView
